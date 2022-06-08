@@ -11,7 +11,7 @@ Esta aplicação foi desenvolvida com Next.js e Chakra UI para um code challenge
 ```bash
 git clone https://github.com/leonardo015/milk-check.git
 cd milk-check
-yarn install
+yarn
 yarn build
 yarn start
 ```
