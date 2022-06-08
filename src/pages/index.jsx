@@ -14,18 +14,22 @@ import {
   useBreakpointValue,
   useColorModeValue,
   VStack,
-  Divider,
+  Tooltip,
   IconButton,
   useToast,
+  Link,
+  Stack,
 } from '@chakra-ui/react';
-import { GrLocation } from 'react-icons/gr';
+import { GoLocation } from 'react-icons/go';
 import { CgDetailsMore } from 'react-icons/cg';
 import { MdEdit, MdDelete } from 'react-icons/md';
+import { FiClock } from 'react-icons/fi';
 import ConfirmDialog from '../components/ConfirmDialog';
 
 moment.locale('pt-br');
 
 const Index = ({ supervisions }) => {
+  const toast = useToast();
   const [data, setData] = useState(supervisions);
 
   const [confirmDialog, setConfirmDialog] = useState({
@@ -36,8 +40,6 @@ const Index = ({ supervisions }) => {
     onConfirm: () => {},
     onCancel: () => {},
   });
-
-  const toast = useToast();
 
   const handleDelete = (id) => {
     setConfirmDialog({
@@ -95,17 +97,49 @@ const Index = ({ supervisions }) => {
             key={supervision._id}
           >
             <HStack>
-              <VStack w="full" align="left">
-                <Heading fontSize="lg">{supervision.farmer.name}</Heading>
-                <Text
-                  fontSize="sm"
-                  color={useColorModeValue('gray.600', 'gray.400')}
+              <Stack direction={{ base: 'column', md: 'row' }}>
+                <VStack align="left">
+                  <Heading mr="4" fontSize="lg">
+                    {supervision.farmer.name}
+                  </Heading>
+                  <Text
+                    fontSize="sm"
+                    color={useColorModeValue('gray.600', 'gray.400')}
+                  >
+                    <Icon
+                      as={GoLocation}
+                      color={useColorModeValue('gray.600', 'gray.400')}
+                      mr="2"
+                    />
+                    {supervision.farmer.city}
+                  </Text>
+                </VStack>
+                <Spacer maxW="4" />
+                <VStack align="left" justify="center">
+                  <Text as="sub" color="gray.500">
+                    Fazendeiro
+                  </Text>
+                  <Text mt="0">{supervision.from.name}</Text>
+                </VStack>
+                <Spacer maxW="4" />
+                <VStack align="left" justify="center">
+                  <Text as="sub" color="gray.500">
+                    Supervisor
+                  </Text>
+                  <Text mt="0">{supervision.to.name}</Text>
+                </VStack>
+              </Stack>
+              <Spacer />
+              <HStack alignItems="center">
+                <Tooltip
+                  label={`Criado em ${moment(supervision.created_at).format(
+                    'DD/MM/YYYY [às] HH:MM'
+                  )}`}
                 >
-                  <Icon as={GrLocation} /> {supervision.farmer.city}
-                </Text>
-              </VStack>
-              <Divider orientation="vertical" h="full" />
-              <HStack>
+                  <span style={{ maxHeight: '20px', marginRight: '8px' }}>
+                    <Icon color="gray.400" as={FiClock} />
+                  </span>
+                </Tooltip>
                 <IconButton
                   size="md"
                   icon={<MdDelete size="18px" />}
