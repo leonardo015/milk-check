@@ -130,16 +130,21 @@ const Index = ({ supervisions }) => {
                 </VStack>
               </Stack>
               <Spacer />
-              <HStack alignItems="center">
+              <Stack
+                direction={{ base: 'column', md: 'row' }}
+                alignItems="center"
+                justify="center"
+              >
                 <Tooltip
                   label={`Criado em ${moment(supervision.created_at).format(
                     'DD/MM/YYYY [às] HH:MM'
                   )}`}
                 >
-                  <span style={{ maxHeight: '20px', marginRight: '8px' }}>
+                  <span style={{ maxHeight: '20px' }}>
                     <Icon color="gray.400" as={FiClock} />
                   </span>
                 </Tooltip>
+                <Spacer maxW="8px" />
                 <IconButton
                   size="md"
                   icon={<MdDelete size="18px" />}
@@ -161,7 +166,7 @@ const Index = ({ supervisions }) => {
                     variant="solid"
                   />
                 </NextLink>
-              </HStack>
+              </Stack>
             </HStack>
           </Box>
         ))}
