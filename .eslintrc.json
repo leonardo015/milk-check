@@ -1,3 +1,25 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "eslint-plugin-import-helpers",
+    "import"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": "error",
+    "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": 0,
+    "react/display-name": 0,
+    "react/prop-types": "off"
+  }
 }
