@@ -4,6 +4,7 @@
     "react-hooks",
     "prettier",
     "eslint-plugin-import-helpers",
+    "eslint-plugin-prettier",
     "import"
   ],
   "extends": [
