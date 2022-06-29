@@ -5,7 +5,7 @@ Sample React application built with NextJS and Chakra UI
 ## How to run
 
 - Clone the repo
-- Enter the project's folder
+- Navigate to project's folder
 - Install the dependencies
 - Execute build
 - Execute start
