@@ -17,7 +17,7 @@ yarn
 yarn build
 yarn start
 ```
-## Feito isso, acesse a aplicação via http://localhost:3000
+## Access the app via http://localhost:3000
 
 [pt-BR]
 
